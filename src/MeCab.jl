@@ -66,12 +66,14 @@ end
 type MecabNode
   surface::UTF8String
   feature::UTF8String
+  posid::UInt16
 end
 
 function create_node(raw::MecabRawNode)
   MecabNode(
     create_surface(raw),
     bytestring(raw.feature),
+    raw.posid,
   )
 end
 
